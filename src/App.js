@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Countdown from 'react-countdown';
+
+const Completionist = () => <span>You are good to go!</span>;
+
+const countDownDate = new Date("Oct 5, 2020 15:37:25").getTime();
+
+const renderer = ({ hours, minutes, seconds, completed }) => {
+  if (completed) {
+    return <Completionist />;
+  } else {
+    return <span>{hours}:{minutes}:{seconds}</span>;
+  }
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="bgimg">
+      <div className="middle">
+        <h1>COMING SOON</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <Countdown date={countDownDate} renderer={renderer}
+  />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+      <div className="bottomleft">
+        <p>Goutham Sidhardha</p>
+      </div>
     </div>
   );
 }
